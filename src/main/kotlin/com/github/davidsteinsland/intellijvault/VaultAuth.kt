@@ -7,10 +7,11 @@ import com.intellij.database.dataSource.DatabaseConnectionInterceptor.ProtoConne
 import com.intellij.database.dataSource.DatabaseCredentialsAuthProvider
 import com.intellij.database.dataSource.LocalDataSource
 import com.intellij.database.dataSource.url.JdbcUrlParserUtil
-import com.intellij.database.dataSource.url.StatelessJdbcUrlParser
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.future.future
-import java.net.URI
 import java.util.concurrent.CompletionStage
 
 class VaultAuth : DatabaseAuthProvider, CoroutineScope {
@@ -48,7 +49,13 @@ class VaultAuth : DatabaseAuthProvider, CoroutineScope {
 
         return future {
             val json = vault.readJson("postgresql/$cluster/creds/$database-readonly")
-            DatabaseCredentialsAuthProvider.applyCredentials(connection, Credentials(json.path("data").path("username").asText(), json.path("data").path("password").asText()), true)
+            val username = json.path("data").path("username").asText()
+            val password = json.path("data").path("password").asText()
+            DatabaseCredentialsAuthProvider.applyCredentials(
+                connection,
+                Credentials(username, password),
+                true
+            )
         }
     }
 }

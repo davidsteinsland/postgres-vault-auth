@@ -31,5 +31,4 @@ internal class Vault {
 
     private fun <R> execute(pb: ProcessBuilder, block: (Process) -> R) =
         block(pb.start())
-
 }
