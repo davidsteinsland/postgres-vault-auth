@@ -6,10 +6,15 @@
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.database</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.davidsteinsland.intellijvault.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.davidsteinsland.intellijvault.services.MyProjectService"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij.database">
+        <connectionInterceptor implementation="com.github.davidsteinsland.intellijvault.VaultAuth"/>
     </extensions>
 
     <applicationListeners>
