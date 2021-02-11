@@ -1,8 +1,8 @@
 # intellij-vault
 
 ![Build](https://github.com/davidsteinsland/intellij-vault/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/PLUGIN_ID.svg)](https://plugins.jetbrains.com/plugin/PLUGIN_ID)
+[![Version](https://img.shields.io/jetbrains/plugin/v/16092-intellij-vault.svg)](https://plugins.jetbrains.com/plugin/16092-intellij-vault)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/16092-intellij-vault.svg)](https://plugins.jetbrains.com/plugin/16092-intellij-vault)
 
 ## Template ToDo list
 - [x] Create a new [IntelliJ Platform Plugin Template][template] project.
