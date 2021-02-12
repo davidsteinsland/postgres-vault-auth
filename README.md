@@ -1,11 +1,16 @@
-# intellij-vault
+# PostgreSQL Vault Auth
 
 ![Build](https://github.com/davidsteinsland/intellij-vault/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/16092-intellij-vault.svg)](https://plugins.jetbrains.com/plugin/16092-intellij-vault)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/16092-intellij-vault.svg)](https://plugins.jetbrains.com/plugin/16092-intellij-vault)
 
 <!-- Plugin description -->
-Henter database-credentials fra Vault.
+Fetches credentials for a PostgreSQL database from
+Vault.
+
+This plugin assumes that `vault` is installed and available.
+If you're not authenticated against Vault, the OIDC method
+is selected (which will trigger your browser to open a tab with the signin process).
 <!-- Plugin description end -->
 
 ## Installation

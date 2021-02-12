@@ -1,1 +1,1 @@
-rootProject.name = "intellij-vault"
+rootProject.name = "postgres-vault-auth"

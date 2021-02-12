@@ -1,4 +1,4 @@
-package com.github.davidsteinsland.intellijvault
+package com.github.davidsteinsland.postgres_vault
 
 import com.intellij.AbstractBundle
 import org.jetbrains.annotations.NonNls

@@ -1,6 +1,6 @@
-package com.github.davidsteinsland.intellijvault.services
+package com.github.davidsteinsland.postgres_vault.services
 
-import com.github.davidsteinsland.intellijvault.MyBundle
+import com.github.davidsteinsland.postgres_vault.MyBundle
 import com.intellij.openapi.project.Project
 
 class MyProjectService(project: Project) {

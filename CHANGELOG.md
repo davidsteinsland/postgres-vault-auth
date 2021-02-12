@@ -1,11 +1,12 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# intellij-vault Changelog
+# PostgreSQL Vault Auth Changelog
 
 ## [Unreleased]
 ### Added
 
 ### Changed
+- Plugin-navn endret til å unngå "IntelliJ" i navnet
 
 ### Deprecated
 
