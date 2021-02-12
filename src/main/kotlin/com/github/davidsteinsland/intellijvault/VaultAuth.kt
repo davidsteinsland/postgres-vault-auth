@@ -16,13 +16,8 @@ import java.util.concurrent.CompletionStage
 
 class VaultAuth : DatabaseAuthProvider, CoroutineScope {
     private companion object {
-        private val clusters = mapOf(
-            "prod-pg.intern.nav.no" to "prod-fss",
-            "dev-pg.intern.nav.no" to "preprod-fss"
-        )
-
         private fun determineCluster(host: String?) =
-            host?.let { clusters[host] } ?: "preprod-fss"
+            host?.contains("prod")?.takeIf { it }?.let { "prod-fss" } ?: "preprod-fss"
     }
 
     private val vault = Vault()
