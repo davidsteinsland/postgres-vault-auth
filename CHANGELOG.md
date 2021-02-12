@@ -12,6 +12,7 @@
 ### Removed
 
 ### Fixed
+- Pålogging til Vault
 
 ### Security
 ## [1.0.2]
