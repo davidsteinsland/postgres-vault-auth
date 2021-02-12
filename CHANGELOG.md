@@ -3,81 +3,30 @@
 # PostgreSQL Vault Auth Changelog
 
 ## [Unreleased]
-### Added
-
-### Changed
-
-### Deprecated
-
-### Removed
 
 ### Fixed
+- Changed the change log language to English
 
-### Security
 ## [1.0.6]
-### Added
 
 ### Changed
-- Oppdaterte plugin ID
+- Updated plugin ID
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [1.0.5]
-### Added
 
 ### Changed
-- Plugin-navn endret til å unngå "IntelliJ" i navnet
+- Plugin name changed to avoid the use of "IntelliJ"
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [1.0.4]
 ### Added
-- Plugin-logo
+- Plugin logo
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [1.0.3]
-### Added
-
-### Changed
-
-### Deprecated
-
-### Removed
-
 ### Fixed
-- Pålogging til Vault
+- Vault Authentication
 
-### Security
 ## [1.0.2]
-### Added
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [1.0.1]
 ### Added
 - Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
