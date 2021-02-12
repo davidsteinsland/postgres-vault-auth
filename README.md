@@ -1,8 +1,8 @@
 # PostgreSQL Vault Auth
 
 ![Build](https://github.com/davidsteinsland/intellij-vault/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/16092-intellij-vault.svg)](https://plugins.jetbrains.com/plugin/16092-intellij-vault)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/16092-intellij-vault.svg)](https://plugins.jetbrains.com/plugin/16092-intellij-vault)
+[![Version](https://img.shields.io/jetbrains/plugin/v/16104-postgresql-vault-auth.svg)](https://plugins.jetbrains.com/plugin/16104-postgresql-vault-auth)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/16104-postgresql-vault-auth.svg)](https://plugins.jetbrains.com/plugin/16104-postgresql-vault-auth)
 
 <!-- Plugin description -->
 Fetches credentials for a PostgreSQL database from
@@ -17,7 +17,7 @@ is selected (which will trigger your browser to open a tab with the signin proce
 
 - Using IDE built-in plugin system:
   
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "intellij-vault"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Postgres Vault Auth"</kbd> >
   <kbd>Install Plugin</kbd>
   
 - Manually:

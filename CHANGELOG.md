@@ -6,6 +6,19 @@
 ### Added
 
 ### Changed
+- Oppdaterte plugin ID
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [1.0.5]
+### Added
+
+### Changed
 - Plugin-navn endret til å unngå "IntelliJ" i navnet
 
 ### Deprecated
