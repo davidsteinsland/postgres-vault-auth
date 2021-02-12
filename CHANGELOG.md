@@ -6,6 +6,18 @@
 ### Added
 
 ### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [1.0.6]
+### Added
+
+### Changed
 - Oppdaterte plugin ID
 
 ### Deprecated
