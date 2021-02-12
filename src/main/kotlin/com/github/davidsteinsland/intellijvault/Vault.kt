@@ -19,7 +19,7 @@ internal class Vault {
     }
 
     private fun isAuthenticated() =
-        executeAndReturnExitCode("vault", "token", "lookup") > 0
+        executeAndReturnExitCode("vault", "token", "lookup") == 0
 
     private fun executeAndReturnExitCode(vararg command: String) =
         execute(ProcessBuilder(*command).inheritIO(), Process::waitFor)
