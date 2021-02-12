@@ -12,6 +12,18 @@
 ### Removed
 
 ### Fixed
+
+### Security
+## [1.0.3]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
 - Pålogging til Vault
 
 ### Security
