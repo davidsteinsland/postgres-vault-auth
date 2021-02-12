@@ -1,6 +1,6 @@
-package com.github.davidsteinsland.postgres_vault.listeners
+package com.github.davidsteinsland.postgresvault.listeners
 
-import com.github.davidsteinsland.postgres_vault.services.MyProjectService
+import com.github.davidsteinsland.postgresvault.services.MyProjectService
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener

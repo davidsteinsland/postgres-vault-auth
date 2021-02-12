@@ -1,4 +1,4 @@
-package com.github.davidsteinsland.postgres_vault
+package com.github.davidsteinsland.postgresvault
 
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper

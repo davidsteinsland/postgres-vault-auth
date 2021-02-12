@@ -1,4 +1,4 @@
-package com.github.davidsteinsland.postgres_vault
+package com.github.davidsteinsland.postgresvault
 
 import com.intellij.application.ApplicationThreadPool
 import com.intellij.credentialStore.Credentials

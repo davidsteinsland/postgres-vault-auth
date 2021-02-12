@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.github.davidsteinsland.postgres_vault</id>
+    <id>com.github.davidsteinsland.postgresvault</id>
     <name>postgresql-vault-auth</name>
     <vendor>davidsteinsland</vendor>
 
@@ -9,16 +9,16 @@
     <depends>com.intellij.database</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.davidsteinsland.postgres_vault.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.davidsteinsland.postgres_vault.services.MyProjectService"/>
+        <applicationService serviceImplementation="com.github.davidsteinsland.postgresvault.services.MyApplicationService"/>
+        <projectService serviceImplementation="com.github.davidsteinsland.postgresvault.services.MyProjectService"/>
     </extensions>
 
     <extensions defaultExtensionNs="com.intellij.database">
-        <connectionInterceptor implementation="com.github.davidsteinsland.postgres_vault.VaultAuth"/>
+        <connectionInterceptor implementation="com.github.davidsteinsland.postgresvault.VaultAuth"/>
     </extensions>
 
     <applicationListeners>
-        <listener class="com.github.davidsteinsland.postgres_vault.listeners.MyProjectManagerListener"
+        <listener class="com.github.davidsteinsland.postgresvault.listeners.MyProjectManagerListener"
                   topic="com.intellij.openapi.project.ProjectManagerListener"/>
     </applicationListeners>
 </idea-plugin>
