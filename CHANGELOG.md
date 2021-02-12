@@ -3,6 +3,18 @@
 # PostgreSQL Vault Auth Changelog
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [1.0.7]
 
 ### Fixed
 - Changed the change log language to English
