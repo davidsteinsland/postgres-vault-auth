@@ -3,17 +3,9 @@
 # PostgreSQL Vault Auth Changelog
 
 ## [Unreleased]
-### Added
-
 ### Changed
+- Errors are shown in the UI
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [1.0.7]
 
 ### Fixed

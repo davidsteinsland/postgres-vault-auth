@@ -2,6 +2,7 @@ package com.github.davidsteinsland.postgresvault
 
 import com.fasterxml.jackson.databind.node.ObjectNode
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import java.io.IOException
 
 internal class Vault {
     private companion object {
@@ -15,20 +16,30 @@ internal class Vault {
 
     private fun authenticate() {
         if (isAuthenticated()) return
-        executeAndReturnExitCode("vault", "login", "-method=oidc")
+        executeAndReturnJson("vault", "login", "-method=oidc", "-format=json")
     }
 
-    private fun isAuthenticated() =
-        executeAndReturnExitCode("vault", "token", "lookup") == 0
+    private fun isAuthenticated(): Boolean =
+        execute("vault", "token", "lookup") {
+            val errorText = it.errorStream.bufferedReader().readText()
+            if (it.exitValue() != 0 && !errorText.contains("permission denied")) {
+                throw IOException("Failed to lookup token:\n$errorText")
+            }
+            it.exitValue() == 0
+        }
 
-    private fun executeAndReturnExitCode(vararg command: String) =
-        execute(ProcessBuilder(*command).inheritIO(), Process::waitFor)
+    private fun <R> execute(vararg command: String, onSuccess: (Process) -> R) =
+        execute(ProcessBuilder(*command), onSuccess)
 
     private fun executeAndReturnJson(vararg command: String) =
         execute(ProcessBuilder(*command)) {
+            if (it.exitValue() != 0) {
+                val errorText = it.errorStream.bufferedReader().readText()
+                throw IOException("Failed to run process:\n$errorText")
+            }
             mapper.readValue(it.inputStream, ObjectNode::class.java)
         }
 
-    private fun <R> execute(pb: ProcessBuilder, block: (Process) -> R) =
-        block(pb.start())
+    private fun <R> execute(pb: ProcessBuilder, onSuccess: (Process) -> R) =
+        pb.start().also { it.waitFor() }.let(onSuccess)
 }
