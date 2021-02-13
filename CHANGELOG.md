@@ -6,12 +6,15 @@
 ### Added
 
 ### Changed
+- Messages are stored in properties file
 
 ### Deprecated
 
 ### Removed
+- Sample code
 
 ### Fixed
+- Plugin dependency 
 
 ### Security
 ## [1.0.9]

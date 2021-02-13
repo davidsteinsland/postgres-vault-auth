@@ -23,7 +23,7 @@ internal class Vault {
         execute("vault", "token", "lookup") {
             val errorText = it.errorStream.bufferedReader().readText()
             if (it.exitValue() != 0 && !errorText.contains("permission denied")) {
-                throw IOException("Failed to lookup token:\n$errorText")
+                throw IOException(VaultBundle.message("authenticationFailed", errorText))
             }
             it.exitValue() == 0
         }
@@ -35,7 +35,7 @@ internal class Vault {
         execute(ProcessBuilder(*command)) {
             if (it.exitValue() != 0) {
                 val errorText = it.errorStream.bufferedReader().readText()
-                throw IOException("Failed to run process:\n$errorText")
+                throw IOException(VaultBundle.message("processFailed", errorText))
             }
             mapper.readValue(it.inputStream, ObjectNode::class.java)
         }

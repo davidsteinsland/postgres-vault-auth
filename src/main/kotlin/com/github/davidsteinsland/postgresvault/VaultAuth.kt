@@ -22,7 +22,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.future.future
-import java.io.IOException
 import java.util.concurrent.CompletionStage
 import javax.swing.JPanel
 
@@ -32,7 +31,7 @@ class VaultAuth : DatabaseAuthProvider, CoroutineScope {
     override val coroutineContext = SupervisorJob() + Dispatchers.ApplicationThreadPool + CoroutineName("VaultAuth")
     override fun getId() = "vault"
 
-    override fun getDisplayName() = "Vault"
+    override fun getDisplayName() = VaultBundle.message("name")
 
     override fun isApplicable(dataSource: LocalDataSource) =
         dataSource.dbms.isPostgres
@@ -47,22 +46,20 @@ class VaultAuth : DatabaseAuthProvider, CoroutineScope {
 
     override fun intercept(connection: ProtoConnection, silent: Boolean): CompletionStage<ProtoConnection>? {
         val mountPath = connection.connectionPoint.additionalJdbcProperties["vault.path"]
-            ?: throw VaultAuthException("Vault Mount path is not set")
+            ?: throw VaultAuthException(VaultBundle.message("invalidMountPath"))
 
         return future {
             val json = try {
                 vault.readJson(mountPath)
             } catch (err: JsonProcessingException) {
-                throw VaultAuthException("Failed to fetch credentials from Vault", err)
-            } catch (err: IOException) {
-                throw VaultAuthException("Failed to run vault command: ${err.message}", err)
+                throw VaultAuthException(VaultBundle.message("jsonError"), err)
             }
 
             val username = json.path("data").path("username").asText()
             val password = json.path("data").path("password").asText()
 
             if (username.isEmpty() || password.isEmpty()) {
-                throw VaultAuthException("Failed to parse username and password from Vault response")
+                throw VaultAuthException(VaultBundle.message("invalidResponse"))
             }
 
             DatabaseCredentialsAuthProvider.applyCredentials(
@@ -77,7 +74,7 @@ class VaultAuth : DatabaseAuthProvider, CoroutineScope {
     private class VaultWidget(dataSource: LocalDataSource) : DatabaseAuthProvider.AuthWidget {
         private val pathField = JBTextField()
         private val panel = JPanel(GridLayoutManager(1, 6)).apply {
-            val pathLabel = JBLabel("Mount path")
+            val pathLabel = JBLabel(VaultBundle.message("pathLabel"))
             add(pathLabel, createLabelConstraints(0, 0, pathLabel.preferredSize.getWidth()))
             add(pathField, createSimpleConstraints(0, 1, 3))
 
