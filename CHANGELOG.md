@@ -4,16 +4,8 @@
 
 ## [Unreleased]
 ### Added
+- Mount path is set from UI
 
-### Changed
-
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [1.0.8]
 ### Changed
 - Errors are shown in the UI
