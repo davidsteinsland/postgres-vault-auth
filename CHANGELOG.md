@@ -3,6 +3,18 @@
 # PostgreSQL Vault Auth Changelog
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [1.0.10]
 ### Changed
 - Messages are stored in properties file
 
