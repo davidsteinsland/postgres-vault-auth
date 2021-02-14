@@ -3,6 +3,18 @@
 # PostgreSQL Vault Auth Changelog
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [1.0.11]
 ### Fixed
 - Finding absolute path to `vault`
 ## [1.0.10]
