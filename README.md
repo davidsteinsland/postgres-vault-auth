@@ -13,6 +13,17 @@ If you're not authenticated against Vault, the OIDC method
 is selected (which will trigger your browser to open a tab with the signin process).
 <!-- Plugin description end -->
 
+## Configuration (macOS)
+
+Until the plugin provides a way of configuring itself, the
+Vault address can be configured using the `VAULT_ADDR` environment variable.
+
+To make sure it is set for the IntelliJ editor, run the following and restart IntelliJ:
+
+```
+launchctl setenv VAULT_ADDR https://vault-addr.example.org
+``` 
+
 ## Installation
 
 - Using IDE built-in plugin system:
