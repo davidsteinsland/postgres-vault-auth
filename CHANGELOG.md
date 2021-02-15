@@ -3,17 +3,10 @@
 # PostgreSQL Vault Auth Changelog
 
 ## [Unreleased]
-### Added
 
 ### Changed
+- Set build `203` as minimum target because of errors produced by Plugin Verifier for build `202`
 
-### Deprecated
-
-### Removed
-
-### Fixed
-
-### Security
 ## [1.0.11]
 ### Fixed
 - Finding absolute path to `vault`
