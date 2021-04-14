@@ -3,6 +3,7 @@
 # PostgreSQL Vault Auth Changelog
 
 ## [Unreleased]
+- Update the build number to support newer IntelliJ builds
 
 ### Changed
 - Set build `203` as minimum target because of errors produced by Plugin Verifier for build `202`
