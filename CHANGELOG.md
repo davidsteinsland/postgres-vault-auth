@@ -3,6 +3,18 @@
 # PostgreSQL Vault Auth Changelog
 
 ## [Unreleased]
+### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+## [1.0.13]
 - Update the build number to support newer IntelliJ builds
 
 ### Changed
