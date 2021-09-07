@@ -6,11 +6,12 @@
 ### Added
 
 ### Changed
+- Updated `pluginUntilBuild`
 
 ### Deprecated
 
 ### Removed
-- `pluginUntilBuild` is removed, to avoid updating whenever a new version of IntelliJ is released
+
 ### Fixed
 
 ### Security
