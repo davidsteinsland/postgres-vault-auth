@@ -113,6 +113,17 @@ jobs:
           java-version: 11
           cache: gradle
 
+      # Build artifact using buildPlugin Gradle task
+      - name: Build Plugin
+        run: ./gradlew buildPlugin
+
+      # Store built plugin as an artifact for downloading
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: "${{ steps.properties.outputs.name }} - ${{ steps.properties.outputs.version }}"
+          path: ./build/distributions/*
+
       # Set environment variables
       - name: Export Properties
         id: properties
@@ -129,17 +140,6 @@ jobs:
           echo "::set-output name=version::$VERSION"
           echo "::set-output name=name::$NAME"
           echo "::set-output name=changelog::$CHANGELOG"
-
-      # Build artifact using buildPlugin Gradle task
-      - name: Build Plugin
-        run: ./gradlew buildPlugin
-
-      # Store built plugin as an artifact for downloading
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2.2.4
-        with:
-          name: "${{ steps.properties.outputs.name }} - ${{ steps.properties.outputs.version }}"
-          path: ./build/distributions/*
 
   # Prepare a draft release for GitHub Releases page for the manual verification
   # If accepted and published, release workflow would be triggered
