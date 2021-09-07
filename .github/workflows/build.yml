@@ -97,8 +97,8 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     outputs:
-      version: ${{ steps.properties.outputs.version }}
-      changelog: ${{ steps.properties.outputs.changelog }}
+      version: ${{ steps.version.outputs.version }}
+      changelog: ${{ steps.changelog.outputs.changelog }}
     steps:
 
       # Check out current repository
@@ -125,20 +125,22 @@ jobs:
           path: ./build/distributions/*
 
       # Set environment variables
-      - name: Export Properties
-        id: properties
+      - name: Export Version
+        id: version
         shell: bash
         run: |
           PROPERTIES="$(./gradlew properties --console=plain -q)"
           VERSION="$(echo "$PROPERTIES" | grep "^version:" | cut -f2- -d ' ')"
-          NAME="$(echo "$PROPERTIES" | grep "^pluginName:" | cut -f2- -d ' ')"
+          echo "::set-output name=version::$VERSION"
+      # Set environment variables
+      - name: Export Changelog
+        id: changelog
+        shell: bash
+        run: |
           CHANGELOG="$(./gradlew getChangelog --unreleased --no-header --console=plain -q)"
           CHANGELOG="${CHANGELOG//'%'/'%25'}"
           CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
           CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
-
-          echo "::set-output name=version::$VERSION"
-          echo "::set-output name=name::$NAME"
           echo "::set-output name=changelog::$CHANGELOG"
 
   # Prepare a draft release for GitHub Releases page for the manual verification
