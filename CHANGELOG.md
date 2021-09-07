@@ -3,10 +3,12 @@
 # PostgreSQL Vault Auth Changelog
 
 ## [Unreleased]
+
+## [1.0.14]
 ### Added
 
 ### Changed
-- Updated `pluginUntilBuild`
+- Updated pluginsUntilBuild
 
 ### Deprecated
 
@@ -15,7 +17,9 @@
 ### Fixed
 
 ### Security
+
 ## [1.0.13]
+- Update the build number to support newer IntelliJ builds
 - Update the build number to support newer IntelliJ builds
 
 ### Changed
@@ -24,6 +28,7 @@
 ## [1.0.11]
 ### Fixed
 - Finding absolute path to `vault`
+
 ## [1.0.10]
 ### Changed
 - Messages are stored in properties file
@@ -32,7 +37,7 @@
 - Sample code
 
 ### Fixed
-- Plugin dependency 
+- Plugin dependency
 
 ## [1.0.9]
 ### Added
@@ -43,17 +48,14 @@
 - Errors are shown in the UI
 
 ## [1.0.7]
-
 ### Fixed
 - Changed the change log language to English
 
 ## [1.0.6]
-
 ### Changed
 - Updated plugin ID
 
 ## [1.0.5]
-
 ### Changed
 - Plugin name changed to avoid the use of "IntelliJ"
 
