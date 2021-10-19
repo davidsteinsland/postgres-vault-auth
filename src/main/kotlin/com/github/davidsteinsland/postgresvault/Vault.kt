@@ -26,17 +26,23 @@ internal class Vault {
                 ?: exec
     }
 
-    fun readJson(path: String): ObjectNode {
-        authenticate()
+    fun readJson(path: String, address: String): ObjectNode {
+        authenticate(address)
+        if (address.trim().isEmpty())
+            return executeAndReturnJson(vaultExec, "read", "-format=json", path, "-address=$address")
         return executeAndReturnJson(vaultExec, "read", "-format=json", path)
     }
 
-    private fun authenticate() {
-        if (isAuthenticated()) return
-        executeAndReturnJson(vaultExec, "login", "-method=oidc", "-format=json")
+    private fun authenticate(address: String) {
+        if (isAuthenticated(address)) return
+        if (address.trim().isEmpty()) {
+            executeAndReturnJson(vaultExec, "login", "-method=oidc", "-format=json")
+            return
+        }
+        executeAndReturnJson(vaultExec, "login", "-method=oidc", "-format=json", "-address=$address")
     }
 
-    private fun isAuthenticated(): Boolean =
+    private fun isAuthenticated(address: String): Boolean =
         execute(vaultExec, "token", "lookup") {
             val errorText = it.errorStream.bufferedReader().readText()
             if (it.exitValue() != 0 && !errorText.contains("permission denied")) {
