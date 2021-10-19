@@ -34,7 +34,7 @@ internal class Vault {
     }
 
     private fun authenticate(address: String) {
-        if (isAuthenticated(address)) return
+        if (isAuthenticated()) return
         if (address.trim().isEmpty()) {
             executeAndReturnJson(vaultExec, "login", "-method=oidc", "-format=json")
             return
@@ -42,7 +42,7 @@ internal class Vault {
         executeAndReturnJson(vaultExec, "login", "-method=oidc", "-format=json", "-address=$address")
     }
 
-    private fun isAuthenticated(address: String): Boolean =
+    private fun isAuthenticated(): Boolean =
         execute(vaultExec, "token", "lookup") {
             val errorText = it.errorStream.bufferedReader().readText()
             if (it.exitValue() != 0 && !errorText.contains("permission denied")) {
