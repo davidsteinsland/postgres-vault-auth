@@ -107,7 +107,8 @@ class VaultAuth : DatabaseAuthProvider, CoroutineScope {
 
         private fun determineMountPath(host: String, database: String) {
             val cluster = host.contains("prod").takeIf { it }?.let { "prod-fss" } ?: "preprod-fss"
-            pathField.text = "postgresql/$cluster/creds/$database-readonly"
+            val role = pathField.text?.split('/')?.lastOrNull()?.takeIf { it.startsWith(database) } ?: "$database-readonly"
+            pathField.text = "postgresql/$cluster/creds/$role"
         }
 
         override fun isPasswordChanged(): Boolean {
