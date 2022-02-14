@@ -13,6 +13,8 @@
 ### Removed
 
 ### Fixed
+- NPE when plugin loaded
+- Role is no longer overwritten if set to anything other than `readonly`
 
 ### Security
 ## [1.0.13]
