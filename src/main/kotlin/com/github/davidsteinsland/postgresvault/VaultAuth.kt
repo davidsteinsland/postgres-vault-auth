@@ -82,7 +82,7 @@ class VaultAuth : DatabaseAuthProvider, CoroutineScope {
             val parser = JdbcUrlParserUtil.parsed(
                 dataSource.connectionConfig,
                 dataSource.url
-            )!!
+            ) ?: return@apply
 
             val host = parser.getParameter("host") ?: return@apply
             val db = parser.getParameter("database") ?: return@apply
