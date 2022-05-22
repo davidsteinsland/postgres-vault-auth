@@ -33,8 +33,9 @@ class VaultAuth : DatabaseAuthProvider, CoroutineScope {
 
     override fun getDisplayName() = VaultBundle.message("name")
 
-    override fun isApplicable(dataSource: LocalDataSource) =
-        dataSource.dbms.isPostgres
+    override fun isApplicable(dataSource: LocalDataSource, p1: DatabaseAuthProvider.ApplicabilityLevel): Boolean {
+        return dataSource.dbms.isPostgres
+    }
 
     override fun createWidget(
         project: Project?,
@@ -88,6 +89,8 @@ class VaultAuth : DatabaseAuthProvider, CoroutineScope {
             val db = parser.getParameter("database") ?: return@apply
             determineMountPath(host, db)
         }
+
+        override fun onChanged(p0: Runnable) {}
 
         override fun save(dataSource: LocalDataSource, copyCredentials: Boolean) {
             dataSource.additionalJdbcProperties["vault.path"] = pathField.text
