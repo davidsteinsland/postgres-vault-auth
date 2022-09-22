@@ -26,14 +26,20 @@ internal class Vault {
                 ?: exec
     }
 
-    fun readJson(path: String): ObjectNode {
-        authenticate()
+    fun readJson(path: String, address: String): ObjectNode {
+        authenticate(address)
+        if (address.trim().isEmpty())
+            return executeAndReturnJson(vaultExec, "read", "-format=json", path, "-address=$address")
         return executeAndReturnJson(vaultExec, "read", "-format=json", path)
     }
 
-    private fun authenticate() {
+    private fun authenticate(address: String) {
         if (isAuthenticated()) return
-        executeAndReturnJson(vaultExec, "login", "-method=oidc", "-format=json")
+        if (address.trim().isEmpty()) {
+            executeAndReturnJson(vaultExec, "login", "-method=oidc", "-format=json")
+            return
+        }
+        executeAndReturnJson(vaultExec, "login", "-method=oidc", "-format=json", "-address=$address")
     }
 
     private fun isAuthenticated(): Boolean =
